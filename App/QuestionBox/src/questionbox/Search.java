@@ -636,7 +636,8 @@ public class Search extends javax.swing.JFrame {
      {
         try{
             Siteurl = evt.getURL () ;
-            this.txtOnlineResults.setPage ( Siteurl ) ;
+            BareBonesBrowserLaunch.openURL(Siteurl.toString());
+            this.txtOnlineResults.setText("Copy and paste your results from the search here. Then press Save \n OR click back to go back to results.");
             txtOnlineResults.setEditable(true);
         }
         catch(Exception e)

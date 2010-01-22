@@ -159,17 +159,16 @@ public class CatFrm extends javax.swing.JFrame {
             Category cat = new Category();
             cat.setTitle(txtTitle.getText());
             cat.setDescr(txtAreaDescr.getText());
-            cat.AddCategory();
-
-            JOptionPane.showMessageDialog(this, "A new category added successfully","Information",JOptionPane.ERROR_MESSAGE);
-
-            //Clear the fields.
-             txtAreaDescr.setText("");
-            txtTitle.setText("");
+           if(cat.AddCategory())
+           {    JOptionPane.showMessageDialog(this, "A new category added successfully","Information",JOptionPane.ERROR_MESSAGE);
+                //Clear the fields.
+                txtAreaDescr.setText("");
+                txtTitle.setText("");
+           }
 
        } catch (Exception e)
         {
-            JOptionPane.showMessageDialog(this, "Failed to add Category","Information",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Failed to add Category\n"+e.getMessage(),"Information",JOptionPane.ERROR_MESSAGE);
         }
       
     }//GEN-LAST:event_buSaveActionPerformed

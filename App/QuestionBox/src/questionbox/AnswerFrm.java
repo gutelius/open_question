@@ -242,7 +242,8 @@ public class AnswerFrm extends javax.swing.JFrame {
                 long catid = Category.getCategoryIDByTitle(cmbCategoryID.getSelectedItem().toString());
 
                 answer.setCategoryid(catid);
-                answer.UpdateAnswer();
+               if(answer.UpdateAnswer())
+                   JOptionPane.showMessageDialog(this, "Answer was updated successfully","Confirmation",JOptionPane.INFORMATION_MESSAGE);
             }
             else //otherwise if its a new object then add a new answer object to the database.
             {
@@ -253,17 +254,16 @@ public class AnswerFrm extends javax.swing.JFrame {
                 answer.setLink_to_answer(txtLinktoanswer.getText ());
                 long catid = Category.getCategoryIDByTitle(cmbCategoryID.getSelectedItem().toString());
                 answer.setCategoryid(catid);
-                answer.AddAnswer();
+               if(answer.AddAnswer())
+                    JOptionPane.showMessageDialog(this, "Answer was added successfully","Confirmation",JOptionPane.INFORMATION_MESSAGE);
 
             }
-
-            System.out.println("Answer was added or updated successfully");
 
             //clear the textboxes from more input.
             txtSource.setText("");
             txtLinktoanswer.setText("");
             txtDetails.setText("");
-            answer = new Answer(); //clear out the answer object to prepare for a new object.
+            answer = null ;  //clear out the answer object to prepare for a new object.
 
 
         }catch(Exception e)

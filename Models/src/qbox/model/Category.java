@@ -97,7 +97,7 @@ public class Category {
             return DataAccess.ExecuteNonQuery(query,parameter );
         }
         else
-            return false;
+            throw new Exception("Category "+this.Title+" already exists.");
     }
 
     public boolean UpdateCategory() throws Exception
